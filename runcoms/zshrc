@@ -12,3 +12,187 @@ fi
 
 # Customize to your needs...
 
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+bindkey "\eOA" history-search-backward
+bindkey "\eOB" history-search-forward
+
+zstyle :compinstall filename '/home/jeff/.zshrc'
+fpath=(~/.zsh_completions $fpath)
+
+# Load compsys and one of its fancy modules
+zmodload zsh/complist
+autoload -Uz compinit
+compinit
+
+# And set some styles...
+zstyle ':completion:*' completer _complete _approximate
+zstyle ":completion:*:descriptions" format "--- %d ---"
+zstyle ':completion:*:corrections' format "--- %d (%e errors) ---"
+zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:manuals.(^1*)' insert-sections true
+zstyle ':completion:*' menu select
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' rehash yes
+zstyle -e ':completion:*:approximate:*' max-errors \
+       'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
+
+eval `dircolors .dircolors`
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+export ARDUINO_PORT="/dev/ttyUSB*"
+#export TERM=xterm-256color
+
+setopt autopushd pushdminus pushdsilent pushdtohome emacs
+bindkey "^[[4~" end-of-line
+bindkey "^[[1~" beginning-of-line
+
+
+function ne() {
+    $@ 2> /dev/null
+}
+
+function quiet() {
+    $@ &> /dev/null &
+}
+
+function spawn() {
+    nohup $@ &> /dev/null &
+}
+
+
+
+function browser() {
+    quiet $BROWSER --enable-webgl --allow-outdated-plugins --ignore-gpu-blacklist "$1"
+}
+
+function prime() {
+    /usr/sbin/hald --daemon=yes --verbose=yes
+    rm -rf ~/.adobe
+    firefox "https://www.amazon.com/gp/video/library?ie=UTF8&ref_=gno_yam_yvl"
+}
+
+alias incognito='browser --incognito'
+alias chrome='browser'
+
+unalias g
+function g() {
+    browser "http://google.com/#q=$*"
+}
+
+alias mail='browser "https://mail.google.com/mail/?hl=en&tab=wm"'
+alias feedly='browser "http://www.feedly.com/home#category/active"'
+
+function y() {
+    local yubnub='yubnub.org/parser/parse?command='
+    browser $yubnub"$*"
+    # save command for future completion
+    echo $1 >> ~/.complete_y
+    sort -u ~/.complete_y -o ~/.complete_y
+}
+
+alias owa='browser "https://connect.autodesk.com/owa/"'
+alias workday='browser "https://www.myworkday.com/autodesk/fx/home.flex"'
+
+function whois() {
+    local name=`echo -n $@ | perl -p -e 's/([^A-Za-z0-9])/sprintf("%%%02X", ord($1))/seg'`
+    browser "https://connect.autodesk.com/owa/?ae=Dialog&t=AddressBook&ab=&ctx=1&sch=${name}"
+}
+
+function whack() {
+    ps -ef | fgrep --ignore-case $@ | fgrep -v fgrep | awk '{print $2}' | xargs kill -9
+}
+
+function radio() {
+    local station
+    station=`find ~/Dropbox/sync-linux/Radio/ -name "*$@*" -print | head -1`
+    quiet vlc "$station"
+}
+
+## ----------------------------------------------------------- [ working dir ]
+
+function mcd() {
+    mkdir -p “$1″ && cd “$1″;
+}
+
+function ..() {
+    local levels
+    levels=$1
+    while [[ $levels > 0 ]]; do
+        cd .. || break
+        let levels=levels-1
+    done
+    pwd
+}
+
+unalias d
+function d() {
+    if [ $# -eq 0 ]; then
+        # show listing of directories on the stack
+        dirs -v
+    else
+        # roll the stack to get to the specified directory
+        cd -$1 > /dev/null || return 1
+    fi
+}
+
+alias workspace='nemo $workspace'
+alias cooler='nemo $cooler'
+
+alias md=mkdir
+alias p='pwd'
+alias pd='pushd'
+
+
+## ----------------------------------------------------------- [ editor ]
+
+alias e='emacs-dwim --no-wait'
+alias E='SUDO_EDITOR=emacs-dwim sudoedit'
+alias a='e -q; e --eval '\''(jeff/organizer)'\'''
+
+alias edit='e ~/.zshrc'
+
+
+## ----------------------------------------------------------- [ ls ]
+
+alias ls='ls --color=auto'
+alias la='ls -a'
+alias lal='ls -al'
+alias ll='ls -l'
+
+
+## ----------------------------------------------------------- [ git ]
+
+alias fastforward='git fetch upstream && git merge upstream/master'
+# git pull && git submodule update --init --recursive
+alias gp='git push origin master'
+alias gs='git status'
+
+
+alias df='df --human-readable'
+alias ds='dropbox status'
+alias du='du --human-readable'
+alias enq='en'
+
+alias enw='en'
+alias evernote='quiet /usr/share/playonlinux/playonlinux --run "Evernote"'
+alias flud='ssh pi@flud'
+alias grep='grep --colour=auto'
+alias lock='gnome-screensaver-command --lock'
+alias minecraft='java -Xmx1024M -Xms512M -cp minecraft.jar net.minecraft.LauncherFrame'
+alias mirror='rsync -avhW --no-compress --progress'
+alias more='less'
+alias nautilus='nemo'
+alias pg='ps -ef | ag --ignore-case'
+alias pi='ssh pi@raspberrypi'
+alias quicken='quiet /usr/share/playonlinux/playonlinux --run "Quicken"'
+alias qw='quicken'
+alias reload='source ~/.zshrc'
+alias restart_sound='sudo alsa reload && sudo killall pulseaudio'
+alias term='gnome-terminal&'
+alias tunnel='ssh -i ~/.ssh/pixelv -p 9263 -L 5900:carbon:5900 root@71.198.175.133'
+alias U='sudo apt-get --assume-yes update && sudo apt-get --assume-yes upgrade && sudo apt-get --assume-yes dist-upgrade && sudo apt-get --assume-yes autoremove'
