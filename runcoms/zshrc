@@ -42,7 +42,7 @@ zstyle ':completion:*' rehash yes
 zstyle -e ':completion:*:approximate:*' max-errors \
        'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
 
-eval `dircolors .dircolors`
+eval `dircolors ~/.dircolors`
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 export ARDUINO_PORT="/dev/ttyUSB*"
@@ -168,8 +168,7 @@ alias ll='ls -l'
 
 ## ----------------------------------------------------------- [ git ]
 
-alias fastforward='git fetch upstream && git merge upstream/master'
-# git pull && git submodule update --init --recursive
+alias fastforward='git fetch upstream && git submodule update --init --recursive && git merge upstream/master'
 alias gp='git push origin master'
 alias gs='git status'
 
