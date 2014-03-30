@@ -1,3 +1,4 @@
+# -*- mode: sh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
 #
 # Sets Prezto options.
 #
@@ -88,7 +89,7 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'sorin'
+zstyle ':prezto:module:prompt' theme 'uplands'
 
 #
 # Ruby
@@ -123,28 +124,29 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 zstyle ':prezto:module:syntax-highlighting' highlighters \
   'main' \
   'brackets' \
-  'pattern' \
-  'cursor' \
-  'root'
-#
+  'pattern'
+#  'cursor' \
+#  'root'
+
+
 # Set syntax highlighting styles.
-zstyle ':prezto:module:syntax-highlighting' styles \
-  'builtin' 'bg=blue' \
-  'command' 'bg=blue' \
-  'function' 'bg=blue'
+#zstyle ':prezto:module:syntax-highlighting' styles \
+#  'builtin' 'bg=blue' \
+#  'command' 'bg=blue' \
+#  'function' 'bg=blue'
 
 #
 # Terminal
 #
 
 # Auto set the tab and window titles.
-zstyle ':prezto:module:terminal' auto-title 'yes'
+#zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # Set the window title format.
-zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
+#zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
 
 # Set the tab title format.
-zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
+#zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
 
 #
 # Tmux

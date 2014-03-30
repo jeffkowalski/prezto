@@ -1,3 +1,4 @@
+# -*- mode: sh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
 #
 # Executes commands at the start of an interactive session.
 #
@@ -176,14 +177,11 @@ alias gs='git status'
 alias df='df --human-readable'
 alias ds='dropbox status'
 alias du='du --human-readable'
-alias enq='en'
 
-alias enw='en'
 alias evernote='quiet /usr/share/playonlinux/playonlinux --run "Evernote"'
 alias flud='ssh pi@flud'
 alias grep='grep --colour=auto'
 alias lock='gnome-screensaver-command --lock'
-alias minecraft='java -Xmx1024M -Xms512M -cp minecraft.jar net.minecraft.LauncherFrame'
 alias mirror='rsync -avhW --no-compress --progress'
 alias more='less'
 alias nautilus='nemo'
@@ -193,6 +191,6 @@ alias quicken='quiet /usr/share/playonlinux/playonlinux --run "Quicken"'
 alias qw='quicken'
 alias reload='source ~/.zshrc'
 alias restart_sound='sudo alsa reload && sudo killall pulseaudio'
-alias term='gnome-terminal&'
+alias term='spawn gnome-terminal'
 alias tunnel='ssh -i ~/.ssh/pixelv -p 9263 -L 5900:carbon:5900 root@71.198.175.133'
 alias U='sudo apt-get --assume-yes update && sudo apt-get --assume-yes upgrade && sudo apt-get --assume-yes dist-upgrade && sudo apt-get --assume-yes autoremove'
