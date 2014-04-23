@@ -174,7 +174,6 @@ alias gs='git status'
 
 
 alias df='df --human-readable'
-alias ds='dropbox status'
 alias du='du --human-readable'
 
 alias evernote='quiet /usr/share/playonlinux/playonlinux --run "Evernote"'
