@@ -80,7 +80,7 @@ function prime() {
 alias incognito='browser --incognito'
 alias chrome='browser'
 
-alias g && unalias g
+alias g > /dev/null && unalias g
 function g() {
     browser "http://google.com/#q=$*"
 }
@@ -130,7 +130,7 @@ function ..() {
     pwd
 }
 
-alias d && unalias d
+alias d > /dev/null && unalias d
 function d() {
     if [ $# -eq 0 ]; then
         # show listing of directories on the stack
