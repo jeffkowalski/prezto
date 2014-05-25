@@ -80,7 +80,7 @@ function prime() {
 alias incognito='browser --incognito'
 alias chrome='browser'
 
-unalias g
+alias g && unalias g
 function g() {
     browser "http://google.com/#q=$*"
 }
@@ -130,7 +130,7 @@ function ..() {
     pwd
 }
 
-unalias d
+alias d && unalias d
 function d() {
     if [ $# -eq 0 ]; then
         # show listing of directories on the stack
@@ -179,6 +179,7 @@ alias du='du --human-readable'
 alias evernote='quiet /usr/share/playonlinux/playonlinux --run "Evernote"'
 alias flud='ssh pi@flud'
 alias grep='grep --colour=auto'
+alias hamitup='sudo /etc/init.d/logmein-hamachi start'
 alias lock='gnome-screensaver-command --lock'
 alias mirror='rsync -avhW --no-compress --progress'
 alias more='less'
