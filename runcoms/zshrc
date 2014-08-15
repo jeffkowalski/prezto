@@ -195,3 +195,8 @@ alias tomato='ssh -i ~/.ssh/pixelv -p 9263 root@24.7.83.148'
 alias tunnel='ssh -i ~/.ssh/pixelv -p 9263 -L 5900:carbon:5900 root@24.7.83.148'
 alias stunnel='ssh -f -N -i ~/.ssh/pixelv -p 9263 -L 5900:carbon:5900 root@24.7.83.148'
 alias U='sudo apt-get --assume-yes update && sudo apt-get --assume-yes upgrade && sudo apt-get --assume-yes dist-upgrade && sudo apt-get --assume-yes autoremove'
+
+
+if [[ -n ${EMACS} ]]; then
+  zstyle ':prezto:module:terminal' auto-title 'no'
+fi
