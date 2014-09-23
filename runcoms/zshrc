@@ -192,9 +192,9 @@ alias qw='quicken'
 alias reload='source ~/.zshrc'
 alias restart_sound='sudo alsa reload && sudo killall pulseaudio'
 alias term='spawn gnome-terminal'
-alias tomato='ssh -i ~/.ssh/pixelv -p 9263 root@24.7.83.148'
-alias tunnel='ssh -i ~/.ssh/pixelv -p 9263 -L 5900:carbon:5900 root@24.7.83.148'
-alias stunnel='ssh -f -N -i ~/.ssh/pixelv -p 9263 -L 5900:carbon:5900 root@24.7.83.148'
+alias router='ssh -i ~/.ssh/pixelv -p 9263 admin@uplands.asuscomm.com'
+alias tunnel='ssh -i ~/.ssh/pixelv -p 9263 -L 5900:carbon:5900 admin@uplands.asuscomm.com'
+alias stunnel='ssh -f -N -i ~/.ssh/pixelv -p 9263 -L 5900:carbon:5900 admin@uplands.asuscomm.com'
 alias U='sudo apt-get --assume-yes update && sudo apt-get --assume-yes upgrade && sudo apt-get --assume-yes dist-upgrade && sudo apt-get --assume-yes autoremove'
 
 
