@@ -48,7 +48,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 export ARDUINO_PORT="/dev/ttyUSB*"
 #export TERM=xterm-256color
 
-setopt autopushd pushdminus pushdsilent pushdtohome emacs
+setopt autopushd pushdminus pushdsilent pushdtohome emacs interactive_comments
 bindkey "^[[4~" end-of-line
 bindkey "^[[1~" beginning-of-line
 
