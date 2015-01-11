@@ -55,6 +55,7 @@ cdpath=(
 path=(
   ~/bin
   /usr/local/{bin,sbin}
+  /usr/local/opt/coreutils/libexec/gnubin
   $path
 )
 
