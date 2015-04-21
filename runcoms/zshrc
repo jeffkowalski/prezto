@@ -90,7 +90,7 @@ function g() {
 }
 
 alias mail='browser "https://mail.google.com/mail/?hl=en&tab=wm"'
-alias feedly='browser "http://www.feedly.com/home#category/active"'
+alias feedly='browser "http://feedly.com/i/latest"'
 
 function y() {
     local yubnub='yubnub.org/parser/parse?command='
