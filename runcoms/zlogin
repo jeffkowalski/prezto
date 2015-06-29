@@ -21,3 +21,6 @@ if (( $+commands[fortune] )); then
     print
   fi
 fi
+
+# Start shared folder synchronization (dropbox, etc.)
+~/bin/ds
