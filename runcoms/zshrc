@@ -89,7 +89,7 @@ function g() {
     browser "http://google.com/#q=$*"
 }
 
-alias mail='browser "https://mail.google.com/mail/?hl=en&tab=wm"'
+alias mail='browser "https://inbox.google.com/"'
 alias feedly='browser "http://feedly.com/i/latest"'
 
 function y() {
