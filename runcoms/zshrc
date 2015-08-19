@@ -28,6 +28,10 @@ zmodload zsh/complist
 autoload -Uz compinit
 compinit
 
+# enable command prediction
+autoload -Uz predict-on
+predict-on
+
 # And set some styles...
 zstyle ':completion:*' completer _complete _approximate
 zstyle ":completion:*:descriptions" format "--- %d ---"
