@@ -59,30 +59,8 @@ bindkey "^[[1~" beginning-of-line
 
 ## ----------------------------------------------------------- [ redirection ]
 
-alias -g NE='2> /dev/null'
-
-function ne() {
-    $@ 2> /dev/null
-}
-
-function quiet() {
-    $@ &> /dev/null &
-}
-
-function spawn() {
-    nohup $@ &> /dev/null &
-}
-
-
-
 function browser() {
-    quiet $BROWSER --enable-webgl --allow-outdated-plugins --ignore-gpu-blacklist "$1"
-}
-
-function prime() {
-    /usr/sbin/hald --daemon=yes --verbose=yes
-    rm -rf ~/.adobe
-    firefox "https://www.amazon.com/gp/video/library?ie=UTF8&ref_=gno_yam_yvl"
+    spawn $BROWSER --enable-webgl --allow-outdated-plugins --ignore-gpu-blacklist "$1"
 }
 
 alias incognito='browser --incognito'
@@ -119,7 +97,7 @@ function whack() {
 function radio() {
     local station
     station=`find ~/Dropbox/sync-linux/Radio/ -name "*$@*" -print | head -1`
-    quiet vlc "$station"
+    spawn vlc "$station"
 }
 
 
@@ -176,7 +154,7 @@ alias gs='git status'
 alias df='df --human-readable'
 alias du='du --human-readable'
 
-alias evernote='quiet /usr/share/playonlinux/playonlinux --run "Evernote"'
+alias evernote='spawn /usr/share/playonlinux/playonlinux --run "Evernote"'
 alias flud='ssh pi@flud'
 alias grep='grep --colour=auto'
 alias hamitup='sudo /etc/init.d/logmein-hamachi start'
@@ -187,7 +165,7 @@ alias more='less'
 alias nautilus='nemo'
 alias pg='ps -ef | ag --ignore-case'
 alias pi='ssh pi@raspberrypi'
-alias quicken='quiet /usr/share/playonlinux/playonlinux --run "Quicken"'
+alias quicken='spawn /usr/share/playonlinux/playonlinux --run "Quicken"'
 alias qw='quicken'
 alias reload='source ~/.zshrc'
 alias restart_sound='sudo alsa reload && sudo killall pulseaudio'
